@@ -1,0 +1,45 @@
+package com.example.corejava;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+class Vehicle {
+    protected static final Logger logger = LogManager.getLogger(Vehicle.class);
+
+    private String type;
+
+    public Vehicle(String type) {
+        this.type = type;
+    }
+
+    public void displayType() {
+        logger.info("Vehicle Type: {}", type);
+    }
+}
+
+class Car extends Vehicle {
+    private String brand;
+
+    public Car(String type, String brand) {
+        super(type); // Call the constructor of the superclass
+        this.brand = brand;
+    }
+
+    public void displayDetails() {
+        logger.info("Car Brand: {}", brand);
+    }
+
+    public void honk() {
+        logger.info("Car honks: Beep Beep!");
+    }
+}
+
+public class InheritanceExample {
+    private static final Logger logger = LogManager.getLogger(InheritanceExample.class);
+
+    public static void main(String[] args) {
+        Car car = new Car("Sedan", "Toyota");
+        car.displayType();
+        car.displayDetails();
+        car.honk();
+    }
+}

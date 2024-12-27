@@ -1,0 +1,46 @@
+package com.example.corejava;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.TreeSet;
+
+public class CollectionSetExamples {
+    // Creating a Logger instance
+    private static final Logger logger = LogManager.getLogger(CollectionSetExamples.class);
+
+    public static void main(String[] args) {
+        // 1. HashSet - Storing unique car brands
+        HashSet<String> carBrands = new HashSet<>();
+        carBrands.add("Toyota");
+        carBrands.add("Ford");
+        carBrands.add("BMW");
+        carBrands.add("Tesla");
+        logger.info("HashSet - Car Brands:");
+        for (String carBrand : carBrands) {
+            logger.info(carBrand);
+        }
+
+        // 2. LinkedHashSet - Storing favorite movie titles (insertion order preserved)
+        LinkedHashSet<String> favoriteMovies = new LinkedHashSet<>();
+        favoriteMovies.add("Inception");
+        favoriteMovies.add("The Dark Knight");
+        favoriteMovies.add("The Matrix");
+        favoriteMovies.add("Interstellar");
+        logger.info("LinkedHashSet - Favorite Movies:");
+        for (String movie : favoriteMovies) {
+            logger.info(movie);
+        }
+
+        // 3. TreeSet - Storing programming languages (sorted order)
+        TreeSet<String> programmingLanguages = new TreeSet<>();
+        programmingLanguages.add("Java");
+        programmingLanguages.add("Python");
+        programmingLanguages.add("JavaScript");
+        programmingLanguages.add("C++");
+        logger.info("TreeSet - Programming Languages:");
+        for (String language : programmingLanguages) {
+            logger.info(language);
+        }
+    }
+}

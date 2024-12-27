@@ -1,0 +1,57 @@
+package com.example.corejava;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+class Car {
+    // Instance variable
+    String model;
+
+    // Static variable
+    static int numberOfCars = 0;
+
+    // Constructor
+    public Car(String model) {
+        this.model = model;
+        numberOfCars++;
+    }
+
+    // Instance Method
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    // Static Method
+    public static int getNumberOfCars() {
+        return numberOfCars;
+    }
+}
+
+public class VariableTypes {
+
+    // Creating a Logger instance
+    private static final Logger logger = LogManager.getLogger(VariableTypes.class);
+
+    public static void main(String[] args) {
+        // Local Variables
+        String manufacturer = "Tesla";
+        int manufacturingYear = 2023;
+
+        logger.info("Local variable manufacturer: " + manufacturer);
+        logger.info("Local variable manufacturingYear: " + manufacturingYear);
+
+        // Creating objects of 'Car' class
+        Car car1 = new Car("Model S");
+        Car car2 = new Car("Model X");
+
+        // Logging instance variables
+        logger.info("Car 1 model: " + car1.model);
+        logger.info("Car 2 model: " + car2.model);
+
+        // Logging static variable
+        logger.info("Number of cars: " + Car.getNumberOfCars());
+
+        // Modifying instance variable
+        car1.setModel("Model S Plaid");
+        logger.info("Updated Car 1 model: " + car1.model);
+    }
+}

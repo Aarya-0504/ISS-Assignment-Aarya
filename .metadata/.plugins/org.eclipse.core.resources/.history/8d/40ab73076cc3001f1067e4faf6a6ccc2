@@ -1,0 +1,62 @@
+package com.example.corejava;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ExceptionExample {
+    private static final Logger logger = LogManager.getLogger(ExceptionExample.class);
+
+    // Example of a Checked Exception (IOException)
+    public void readFile(String fileName) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(fileName));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            logger.info("Read line: {}", line);
+        }
+        reader.close();
+    }
+
+    // Example of an Unchecked Exception (ArrayIndexOutOfBoundsException)
+    public void accessArrayElement(int[] array, int index) {
+        // This might throw an ArrayIndexOutOfBoundsException
+        int element = array[index];
+        logger.info("Accessed element: {}", element);
+    }
+
+    // Example of an Error (OutOfMemoryError)
+    public void causeOutOfMemoryError() {
+        // Attempting to create a very large array to cause an OutOfMemoryError
+        int[] array = new int[Integer.MAX_VALUE];
+        logger.info("Array created with size: {}", array.length);
+    }
+
+    public static void main(String[] args) {
+        ExceptionExample example = new ExceptionExample();
+
+        // Handling Checked Exception (IOException)
+        try {
+            example.readFile("nonexistentfile.txt");
+        } catch (IOException e) {
+            logger.error("Checked Exception: IOException occurred", e);
+        }
+
+        // Handling Unchecked Exception (ArrayIndexOutOfBoundsException)
+        int[] array = {1, 2, 3};
+        try {
+            example.accessArrayElement(array, 5); // This will throw ArrayIndexOutOfBoundsException
+        } catch (ArrayIndexOutOfBoundsException e) {
+            logger.error("Unchecked Exception: ArrayIndexOutOfBoundsException occurred", e);
+        }
+
+        // Handling Error (OutOfMemoryError)
+        try {
+            example.causeOutOfMemoryError(); // This will likely throw an OutOfMemoryError
+        } catch (OutOfMemoryError e) {
+            logger.error("Error: OutOfMemoryError occurred", e);
+        }
+    }
+}
+

@@ -1,0 +1,53 @@
+package com.example.corejava;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.util.*;
+
+public class CollectionExample {
+    // Creating a Logger instance
+    private static final Logger logger = LogManager.getLogger(CollectionExample.class);
+
+    public static void main(String[] args) {
+        // 1. HashSet (unordered, no duplicates)
+        HashSet<String> fruitSet = new HashSet<>();
+        fruitSet.add("Apple"); // Set: ["Apple"]
+        fruitSet.add("Banana"); // Set: ["Apple", "Banana"]
+        fruitSet.add("Cherry"); // Set: ["Apple", "Banana", "Cherry"]
+        fruitSet.add("Apple"); // Duplicate element, will not be added
+        logger.info("HashSet of Fruits: ");
+        for (String fruit : fruitSet) {
+            logger.info(fruit); // Order is not guaranteed
+        }
+
+        // 2. TreeSet (ordered, no duplicates)
+        TreeSet<String> nameSet = new TreeSet<>();
+        nameSet.add("John"); // Set: ["John"]
+        nameSet.add("Alice"); // Set: ["Alice", "John"]
+        nameSet.add("Bob"); // Set: ["Alice", "Bob", "John"]
+        logger.info("TreeSet of Names: ");
+        Iterator<String> nameIterator = nameSet.iterator();
+        while (nameIterator.hasNext()) {
+            logger.info(nameIterator.next()); // Will print in sorted order
+        }
+
+        // 3. PriorityQueue (ordered according to natural order or comparator)
+        PriorityQueue<Integer> numberQueue = new PriorityQueue<>();
+        numberQueue.add(42); // Queue: [42]
+        numberQueue.add(15); // Queue: [15, 42]
+        numberQueue.add(78); // Queue: [15, 42, 78]
+        logger.info("PriorityQueue of Numbers: ");
+        while (!numberQueue.isEmpty()) {
+            logger.info(numberQueue.poll()); // Will print in natural order (ascending)
+        }
+
+        // 4. HashMap (key-value pairs)
+        HashMap<String, Integer> employeeSalary = new HashMap<>();
+        employeeSalary.put("John", 50000); // {"John": 50000}
+        employeeSalary.put("Alice", 60000); // {"John": 50000, "Alice": 60000}
+        employeeSalary.put("Bob", 45000); // {"John": 50000, "Alice": 60000, "Bob": 45000}
+        logger.info("HashMap of Employee Salaries: ");
+        for (Map.Entry<String, Integer> entry : employeeSalary.entrySet()) {
+            logger.info("Employee: " + entry.getKey() + ", Salary: " + entry.getValue());
+        }
+    }
+}

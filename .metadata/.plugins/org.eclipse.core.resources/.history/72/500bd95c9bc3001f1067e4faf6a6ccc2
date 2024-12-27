@@ -1,0 +1,19 @@
+import org.json.JSONObject;
+
+public class JsonExample {
+    public static void main(String[] args) {
+        // Creating a JSON object
+        JSONObject student = new JSONObject();
+        student.put("name", "John Doe");
+        student.put("age", 22);
+        student.put("major", "Computer Science");
+
+        System.out.println("JSON Object: " + student.toString());
+
+        // Parsing a JSON string
+        String jsonString = "{\"course\":\"Java\",\"duration\":\"3 months\"}";
+        JSONObject course = new JSONObject(jsonString);
+        System.out.println("Course Name: " + course.getString("course"));
+        System.out.println("Duration: " + course.getString("duration"));
+    }
+}
