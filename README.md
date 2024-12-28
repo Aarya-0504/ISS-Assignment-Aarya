@@ -15,6 +15,8 @@
 - Built a user registration and login system using JSP, Servlets, and MySQL.
 - Implemented backend functionalities like user authentication and database integration.
 - Hosted application on TomCat server (v10.1).
+- Project screenshots in LoginSignUp directory pdf.
+
 
 ## **5. XML, JSON, FileReadWrite**
 - Demonstrated handling XML and JSON data using Java libraries.
